@@ -30,10 +30,13 @@ This script automates the process of generating Security Static Analysis (SAST) 
 
 1. Ensure Python 3, pip, and pipx are installed.
 2. Clone this repository. 
-3. Run pipx at the root of this repository to install semgrep_reporter CLI tool:
+3. Run pipx at the root of this repository to install semgrep_reporter CLI tool and add it to the PATH:
 
 `pipx install .`
 
+4. You can now run the reporting tool. See the usage documentation below.
+
+`semgrep_reporter <options>`
 
 ## Configuration
 Before running the script, you must set up the `SEMGREP_API_WEB_TOKEN` environment variable with your Semgrep API token:
