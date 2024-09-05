@@ -8,6 +8,10 @@ This script automates the process of generating Security Static Analysis (SAST) 
 
 [Example HTML Report](https://github.com/r2c-CSE/semgrep_reporter/blob/main/reports/1725511917/combined_output-1725511917.html)
 
+```
+Disclaimer: this CLI tool is not an officially supported semgrep product.
+```
+
 ## Features
 
 - Fetch projects and findings from Semgrep based on project tag.
