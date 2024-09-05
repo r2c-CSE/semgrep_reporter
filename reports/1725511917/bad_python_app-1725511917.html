@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semgrep SAST Scan Report for Repository: bad-python-app</title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container-table {
+            display: grid; /* Use CSS Grid */
+            place-items: center; /* Center both horizontally and vertically */
+        }
+
+        .full-width {
+            width: 100%
+        }
+
+        .my_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .my_table th, .my_table td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        .my_table th {
+            background-color: #f2f2f2;
+        }
+        #myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%; /* or any desired width */
+            height: auto; /* to maintain the aspect ratio */
+        }
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A {
+            background-color: green;
+            color: white; /* For better readability */
+        }
+        .grade-B {
+            background-color: yellow;
+            color: black; /* Adjust color for readability */
+        }
+        .grade-C {
+            background-color: orange;
+            color: white;
+        }
+        .grade-D {
+            background-color: red;
+            color: white;
+        }
+        .grade-F {
+            background-color: darkred;
+            color: white;
+        }
+        .break-after {
+            page-break-after: always;
+        }
+
+        td.divider-cell {
+            width: 1
+        }
+
+        td.center-text {
+            text-align: center; 
+        }
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <div class="container">
+      <img alt="logo" id="myImage" src="https://i.ibb.co/8xyV6WJ/Semgrep-logo.png">
+    </div>
+    <div class="container">
+      <h1 class="center-text" id="sast">Semgrep SAST Scan Report for Repository: bad-python-app</h1>
+      <h2 class="center-text" id="reporttime">Report Generated at 2024-09-04 21:52</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="topnav">
+      <h2 class="center-text" id="sast-summary">SAST Scan Summary</h2>
+      <table border="1" class="centered-table">
+        <tr>
+          <th>Vulnerability Severity</th>
+          <th>Vulnerability Count</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-high">Findings- SAST High Severity</a>
+          </td>
+          <td>32</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-medium">Findings- SAST Medium Severity</a>
+          </td>
+          <td>61</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-low">Findings- SAST Low Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="break-after"></div>
+    <div class="container">
+      <div class="heading">
+        <h2 id="sast-high">Findings Summary- High Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablehigh">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/base.html#L18'>templates/base.html#L18</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/base.html#L19'>templates/base.html#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/base.html#L24'>templates/base.html#L24</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/base.html#L25'>templates/base.html#L25</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.command.command-injection-os-system.command-injection-os-system'>command-injection-os-system</a></td>
+      <td>Request data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the &#39;subprocess&#39; module instead and pass the arguments as a list. See https://owasp.org/www-community/attacks/Command_Injection for more information.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L49'>vulns/sql_injection/sql_injection_login.py#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.command.command-injection-os-system.command-injection-os-system'>command-injection-os-system</a></td>
+      <td>Request data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the &#39;subprocess&#39; module instead and pass the arguments as a list. See https://owasp.org/www-community/attacks/Command_Injection for more information.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L54'>vulns/sql_injection/sql_injection_login.py#L54</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.command.subprocess-injection.subprocess-injection'>subprocess-injection</a></td>
+      <td>Detected user input entering a `subprocess` call unsafely. This could result in a command injection vulnerability. An attacker could use this vulnerability to execute arbitrary commands on the host, which allows them to download malware, scan sensitive data, or run any command they wish on the server. Do not let users choose the command to run. In general, prefer to use Python API versions of system commands. If you must use subprocess, use a dictionary to allowlist a set of commands.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L36'>vulns/semgrep_vulns.py#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L21'>vulns/sql_injection/sql_injection_login.py#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using the Django object-relational mappers (ORM) instead of raw SQL queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_search.py#L7'>vulns/sql_injection/sql_injection_search.py#L7</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.injection.os-system-injection.os-system-injection'>os-system-injection</a></td>
+      <td>User data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the &#39;subprocess&#39; module instead and pass the arguments as a list.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L15'>vulns/semgrep_vulns.py#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.injection.os-system-injection.os-system-injection'>os-system-injection</a></td>
+      <td>User data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the &#39;subprocess&#39; module instead and pass the arguments as a list.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L21'>vulns/semgrep_vulns.py#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.injection.os-system-injection.os-system-injection'>os-system-injection</a></td>
+      <td>User data detected in os.system. This could be vulnerable to a command injection and should be avoided. If this must be done, use the &#39;subprocess&#39; module instead and pass the arguments as a list.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L27'>vulns/semgrep_vulns.py#L27</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-os-exec.dangerous-os-exec'>dangerous-os-exec</a></td>
+      <td>Found user controlled content when spawning a process. This is dangerous because it allows a malicious actor to execute commands.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-1.py#L11'>vuln-1.py#L11</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-subprocess-use.dangerous-subprocess-use'>dangerous-subprocess-use</a></td>
+      <td>Detected subprocess function &#39;a&#39; with user controlled data. A malicious actor could leverage this to perform command injection. You may consider using &#39;shlex.escape()&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L36'>vulns/semgrep_vulns.py#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>reviewing</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/file_upload/file_upload.py#L31'>vulns/file_upload/file_upload.py#L31</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/file_upload/file_upload.py#L49'>vulns/file_upload/file_upload.py#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L15'>vulns/semgrep_vulns.py#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L21'>vulns/semgrep_vulns.py#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L27'>vulns/semgrep_vulns.py#L27</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L50'>vulns/sql_injection/sql_injection_login.py#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.dangerous-system-call.dangerous-system-call'>dangerous-system-call</a></td>
+      <td>Found user-controlled data used in a system call. This could allow a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L55'>vulns/sql_injection/sql_injection_login.py#L55</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-os-exec-audit.dangerous-os-exec-audit'>dangerous-os-exec-audit</a></td>
+      <td>Found dynamic content when spawning a process. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Ensure no external data reaches here.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-1.py#L11'>vuln-1.py#L11</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-subprocess-use-audit.dangerous-subprocess-use-audit'>dangerous-subprocess-use-audit</a></td>
+      <td>Detected subprocess function &#39;run&#39; without a static string. If this data can be controlled by a malicious actor, it may be an instance of command injection. Audit the use of this call to ensure it is not controllable by an external resource. You may consider using &#39;shlex.escape()&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L36'>vulns/semgrep_vulns.py#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/file_upload/file_upload.py#L31'>vulns/file_upload/file_upload.py#L31</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/file_upload/file_upload.py#L49'>vulns/file_upload/file_upload.py#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L15'>vulns/semgrep_vulns.py#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L21'>vulns/semgrep_vulns.py#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L27'>vulns/semgrep_vulns.py#L27</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L50'>vulns/sql_injection/sql_injection_login.py#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-system-call-audit.dangerous-system-call-audit'>dangerous-system-call-audit</a></td>
+      <td>Found dynamic content used in a system call. This is dangerous if external data can reach this function call because it allows a malicious actor to execute commands. Use the &#39;subprocess&#39; module instead, which is easier to use without accidentally exposing a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L55'>vulns/sql_injection/sql_injection_login.py#L55</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.subprocess-shell-true.subprocess-shell-true'>subprocess-shell-true</a></td>
+      <td>Found &#39;subprocess&#39; function &#39;call&#39; with &#39;shell=True&#39;. This is dangerous because this call will spawn the command using a shell process. Doing so propagates current shell settings and variables, which makes it much easier for a malicious actor to execute commands. Use &#39;shell=False&#39; instead.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/secretstest.py#L19'>secretstest.py#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dangerous-subprocess-use-audit.dangerous-subprocess-use-audit'>dangerous-subprocess-use-audit</a></td>
+      <td>Detected subprocess function &#39;call&#39; without a static string. If this data can be controlled by a malicious actor, it may be an instance of command injection. Audit the use of this call to ensure it is not controllable by an external resource. You may consider using &#39;shlex.escape()&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/secretstest.py#L19'>secretstest.py#L19</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-medium">Findings Summary- Medium Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablemedium">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L4'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L4</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L247'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L247</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L753'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L753</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L783'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L783</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-10.java#L15'>vuln-main-10.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-10.java#L46'>vuln-main-10.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-2.java#L15'>vuln-main-2.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-2.java#L46'>vuln-main-2.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-3.java#L15'>vuln-main-3.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-3.java#L46'>vuln-main-3.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-4.java#L15'>vuln-main-4.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-4.java#L46'>vuln-main-4.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-7.java#L15'>vuln-main-7.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-7.java#L46'>vuln-main-7.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-9.java#L15'>vuln-main-9.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main-9.java#L46'>vuln-main-9.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main.java#L15'>vuln-main.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.java-jwt.security.jwt-hardcode.java-jwt-hardcoded-secret'>java-jwt-hardcoded-secret</a></td>
+      <td>A hard-coded credential was detected. It is not recommended to store credentials in source-code, as this risks secrets being leaked and used by either an internal or external malicious adversary. It is recommended to use environment variables to securely provide credentials or retrieve credentials from a secure vault or HSM (Hardware Security Module).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vuln-main.java#L46'>vuln-main.java#L46</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L16'>templates/components/navbar.html#L16</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L26'>templates/components/navbar.html#L26</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L29'>templates/components/navbar.html#L29</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L41'>templates/components/navbar.html#L41</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L44'>templates/components/navbar.html#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L54'>templates/components/navbar.html#L54</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L58'>templates/components/navbar.html#L58</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L62'>templates/components/navbar.html#L62</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L66'>templates/components/navbar.html#L66</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L70'>templates/components/navbar.html#L70</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-autoescape-off.template-autoescape-off'>template-autoescape-off</a></td>
+      <td>Detected a template block where autoescaping is explicitly disabled with &#39;{% autoescape off %}&#39;. This allows rendering of raw HTML in this segment. Turn autoescaping on to prevent cross-site scripting (XSS). If you must do this, consider instead, using `mark_safe` in Python code.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L458'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L458</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-autoescape-off.template-autoescape-off'>template-autoescape-off</a></td>
+      <td>Detected a template block where autoescaping is explicitly disabled with &#39;{% autoescape off %}&#39;. This allows rendering of raw HTML in this segment. Turn autoescaping on to prevent cross-site scripting (XSS). If you must do this, consider instead, using `mark_safe` in Python code.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_bad-python-app_20231201-0103.html#L479'>semgrep_sast_findings_bad-python-app_20231201-0103.html#L479</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L16'>templates/components/navbar.html#L16</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L26'>templates/components/navbar.html#L26</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L44'>templates/components/navbar.html#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L54'>templates/components/navbar.html#L54</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L58'>templates/components/navbar.html#L58</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L62'>templates/components/navbar.html#L62</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/components/navbar.html#L66'>templates/components/navbar.html#L66</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/file_upload.html#L5'>templates/file_upload.html#L5</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/idor/idor_login.html#L15'>templates/idor/idor_login.html#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/ssrf.html#L9'>templates/ssrf.html#L9</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/xss-stored.html#L10'>templates/xss-stored.html#L10</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.injection.code.user-eval.user-eval'>user-eval</a></td>
+      <td>Found user data in a call to &#39;eval&#39;. This is extremely dangerous because it can enable an attacker to execute arbitrary remote code on the system. Instead, refactor your code to not use &#39;eval&#39; and instead use a safe library for the specific functionality you need.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L31'>vulns/semgrep_vulns.py#L31</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.audit.app-run-param-config.avoid_app_run_with_bad_host'>avoid_app_run_with_bad_host</a></td>
+      <td>Running flask app with host 0.0.0.0 could expose the server publicly.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L56'>vulns/sql_injection/sql_injection_login.py#L56</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.audit.debug-enabled.debug-enabled'>debug-enabled</a></td>
+      <td>Detected Flask app with debug=True. Do not deploy to production with this flag enabled as it will leak sensitive information. Instead, consider using Flask configuration variables or setting &#39;debug&#39; using system environment variables.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L56'>vulns/sql_injection/sql_injection_login.py#L56</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.audit.render-template-string.render-template-string'>render-template-string</a></td>
+      <td>Found a template created with string formatting. This is susceptible to server-side template injection and cross-site scripting attacks.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/middlewares.py#L16'>middlewares.py#L16</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.audit.secure-set-cookie.secure-set-cookie'>secure-set-cookie</a></td>
+      <td>Found a Flask cookie with insecurely configured properties.  By default the secure, httponly and samesite ar configured insecurely. cookies should be handled securely by setting `secure=True`, `httponly=True`, and `samesite=&#39;Lax&#39;` in response.set_cookie(...). If these parameters are not properly set, your cookies are not properly protected and are at risk of being stolen by an attacker. Include the `secure=True`, `httponly=True`, `samesite=&#39;Lax&#39;` arguments or set these to be true in the Flask configuration.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/idor/idor.py#L33'>vulns/idor/idor.py#L33</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.audit.secure-set-cookie.secure-set-cookie'>secure-set-cookie</a></td>
+      <td>Found a Flask cookie with insecurely configured properties.  By default the secure, httponly and samesite ar configured insecurely. cookies should be handled securely by setting `secure=True`, `httponly=True`, and `samesite=&#39;Lax&#39;` in response.set_cookie(...). If these parameters are not properly set, your cookies are not properly protected and are at risk of being stolen by an attacker. Include the `secure=True`, `httponly=True`, `samesite=&#39;Lax&#39;` arguments or set these to be true in the Flask configuration.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/idor/idor.py#L34'>vulns/idor/idor.py#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.template-autoescape-off.template-autoescape-off'>template-autoescape-off</a></td>
+      <td>Detected a segment of a Flask template where autoescaping is explicitly disabled with &#39;{% autoescape off %}&#39;. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability, or turn autoescape on.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/xss-reflected.html#L13'>templates/xss-reflected.html#L13</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.template-autoescape-off.template-autoescape-off'>template-autoescape-off</a></td>
+      <td>Detected a segment of a Flask template where autoescaping is explicitly disabled with &#39;{% autoescape off %}&#39;. This allows rendering of raw HTML in this segment. Ensure no user data is rendered here, otherwise this is a cross-site scripting (XSS) vulnerability, or turn autoescape on.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/templates/xss-stored.html#L29'>templates/xss-stored.html#L29</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.dynamic-urllib-use-detected.dynamic-urllib-use-detected'>dynamic-urllib-use-detected</a></td>
+      <td>Detected a dynamic value being used with urllib. urllib supports &#39;file://&#39; schemes, so a dynamic value controlled by a malicious actor may allow them to read arbitrary files. Audit uses of urllib calls to ensure user data cannot control the URLs, or consider using the &#39;requests&#39; library instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/ssrf/ssrf.py#L35'>vulns/ssrf/ssrf.py#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.eval-detected.eval-detected'>eval-detected</a></td>
+      <td>Detected the use of eval(). eval() can be dangerous if used to evaluate dynamic content. If this content can be input from outside the program, this may be a code injection vulnerability. Ensure evaluated content is not definable by external sources.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L31'>vulns/semgrep_vulns.py#L31</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.md5-used-as-password.md5-used-as-password'>md5-used-as-password</a></td>
+      <td>It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/idor/idor.py#L14'>vulns/idor/idor.py#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.md5-used-as-password.md5-used-as-password'>md5-used-as-password</a></td>
+      <td>It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L19'>vulns/sql_injection/sql_injection_login.py#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.security.audit.md5-used-as-password.md5-used-as-password'>md5-used-as-password</a></td>
+      <td>It looks like MD5 is used as a password hash. MD5 is not considered a secure password hash because it can be cracked by an attacker in a short amount of time. Use a suitable password hashing function such as scrypt. You can use `hashlib.scrypt`.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/sql_injection/sql_injection_login.py#L44'>vulns/sql_injection/sql_injection_login.py#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.correctness.same-handler-name.flask-duplicate-handler-name'>flask-duplicate-handler-name</a></td>
+      <td>Looks like `route_param_concat` is a flask function handler that registered to two different routes. This will cause a runtime error</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/vulns/semgrep_vulns.py#L17'>vulns/semgrep_vulns.py#L17</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.pass-body.pass-body-fn'>pass-body-fn</a></td>
+      <td>`pass` is the body of function before_request. Consider removing this or raise NotImplementedError() if this is a TODO</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/app.py#L30'>app.py#L30</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.unspecified-open-encoding.unspecified-open-encoding'>unspecified-open-encoding</a></td>
+      <td>Missing &#39;encoding&#39; parameter. &#39;open()&#39; uses device locale encodings by default, corrupting files with special characters. Specify the encoding to ensure cross-platform support when opening files in text mode (e.g. encoding=&quot;utf-8&quot;).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_report_sh.py#L237'>semgrep_sast_findings_report_sh.py#L237</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.unspecified-open-encoding.unspecified-open-encoding'>unspecified-open-encoding</a></td>
+      <td>Missing &#39;encoding&#39; parameter. &#39;open()&#39; uses device locale encodings by default, corrupting files with special characters. Specify the encoding to ensure cross-platform support when opening files in text mode (e.g. encoding=&quot;utf-8&quot;).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/semgrep_sast_findings_report_sh.py#L264'>semgrep_sast_findings_report_sh.py#L264</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.maintainability.is-function-without-parentheses.is-function-without-parentheses'>is-function-without-parentheses</a></td>
+      <td>Is &quot;is_admin&quot; a function or an attribute? If it is a function, you may have meant self.is_admin() because self.is_admin is always true.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/db_models.py#L6'>db_models.py#L6</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.correctness.unchecked-returns.unchecked-subprocess-call'>unchecked-subprocess-call</a></td>
+      <td>This is not checking the return value of this subprocess call; if it fails no exception will be raised. Consider subprocess.check_call() instead</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/secretstest.py#L19'>secretstest.py#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.maintainability.return.return-not-in-function'>return-not-in-function</a></td>
+      <td>`return` only makes sense inside a function</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>pre-commit-diff</td>
+      <td><a href='https://github.com/jkinsfather-demo/bad-python-app/blob/diff/secretstest.py#L20'>secretstest.py#L20</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-low">Findings Summary- Low Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablelow">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+    </div>
+  </body>
+</html>

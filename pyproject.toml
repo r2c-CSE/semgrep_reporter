@@ -1,0 +1,31 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "semgrep_reporter"
+description = "Generate reports from your Semgrep AppSec Platform data."
+version = "0.0.1"
+requires-python = ">= 3.11"
+authors = [
+    {name = "Nitin Nayar", email = "nitin@semgrep.com"},
+    {name = "Jason Kinsfather", email = "jason@semgrep.com"}
+]
+readme = "README.md"
+keywords = ["semgrep"]
+dependencies = [
+  "requests",
+  "PyPDF2",
+  "pandas",
+  "dominate",
+  "plotly.express",
+  "plotly",
+  "xlsxwriter",
+  "weasyprint",
+  "kaleido"
+]
+[project.scripts]
+semgrep_reporter = "semgrep_reporter.cli:main"
+
+[project.entry-points."pipx.run"]
+semgrep_reporter = "semgre_reporter.cli:main"

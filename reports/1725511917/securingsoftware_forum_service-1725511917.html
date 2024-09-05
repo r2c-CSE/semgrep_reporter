@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semgrep SAST Scan Report for Repository: securingsoftware/forum-service</title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container-table {
+            display: grid; /* Use CSS Grid */
+            place-items: center; /* Center both horizontally and vertically */
+        }
+
+        .full-width {
+            width: 100%
+        }
+
+        .my_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .my_table th, .my_table td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        .my_table th {
+            background-color: #f2f2f2;
+        }
+        #myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%; /* or any desired width */
+            height: auto; /* to maintain the aspect ratio */
+        }
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A {
+            background-color: green;
+            color: white; /* For better readability */
+        }
+        .grade-B {
+            background-color: yellow;
+            color: black; /* Adjust color for readability */
+        }
+        .grade-C {
+            background-color: orange;
+            color: white;
+        }
+        .grade-D {
+            background-color: red;
+            color: white;
+        }
+        .grade-F {
+            background-color: darkred;
+            color: white;
+        }
+        .break-after {
+            page-break-after: always;
+        }
+
+        td.divider-cell {
+            width: 1
+        }
+
+        td.center-text {
+            text-align: center; 
+        }
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <div class="container">
+      <img alt="logo" id="myImage" src="https://i.ibb.co/8xyV6WJ/Semgrep-logo.png">
+    </div>
+    <div class="container">
+      <h1 class="center-text" id="sast">Semgrep SAST Scan Report for Repository: securingsoftware/forum-service</h1>
+      <h2 class="center-text" id="reporttime">Report Generated at 2024-09-04 21:52</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="topnav">
+      <h2 class="center-text" id="sast-summary">SAST Scan Summary</h2>
+      <table border="1" class="centered-table">
+        <tr>
+          <th>Vulnerability Severity</th>
+          <th>Vulnerability Count</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-high">Findings- SAST High Severity</a>
+          </td>
+          <td>4</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-medium">Findings- SAST Medium Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-low">Findings- SAST Low Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="break-after"></div>
+    <div class="container">
+      <div class="heading">
+        <h2 id="sast-high">Findings Summary- High Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablehigh">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>update_products</td>
+      <td><a href='https://gitlab.com/securingsoftware/forum-service/blob/update_products/sqli-sequelize.ts#L5'>sqli-sequelize.ts#L5</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>update_products</td>
+      <td><a href='https://gitlab.com/securingsoftware/forum-service/blob/update_products/sqli-sequelize.ts#L5'>sqli-sequelize.ts#L5</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.deno.security.audit.deno-dangerous-run.deno-dangerous-run'>deno-dangerous-run</a></td>
+      <td>Detected non-literal calls to Deno.run(). This could lead to a command injection vulnerability.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://gitlab.com/securingsoftware/forum-service/blob/main/src/deno-dangerous-run.js#L12'>src/deno-dangerous-run.js#L12</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.shelljs.security.shelljs-exec-injection.shelljs-exec-injection'>shelljs-exec-injection</a></td>
+      <td>If unverified user data can reach the `exec` method it can result in Remote Code Execution</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://gitlab.com/securingsoftware/forum-service/blob/main/src/shelljs-exec-injection.js#L5'>src/shelljs-exec-injection.js#L5</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-medium">Findings Summary- Medium Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablemedium">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-low">Findings Summary- Low Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablelow">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semgrep SAST Scan Report for Repository: local_scan/vulnado</title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container-table {
+            display: grid; /* Use CSS Grid */
+            place-items: center; /* Center both horizontally and vertically */
+        }
+
+        .full-width {
+            width: 100%
+        }
+
+        .my_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .my_table th, .my_table td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        .my_table th {
+            background-color: #f2f2f2;
+        }
+        #myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%; /* or any desired width */
+            height: auto; /* to maintain the aspect ratio */
+        }
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A {
+            background-color: green;
+            color: white; /* For better readability */
+        }
+        .grade-B {
+            background-color: yellow;
+            color: black; /* Adjust color for readability */
+        }
+        .grade-C {
+            background-color: orange;
+            color: white;
+        }
+        .grade-D {
+            background-color: red;
+            color: white;
+        }
+        .grade-F {
+            background-color: darkred;
+            color: white;
+        }
+        .break-after {
+            page-break-after: always;
+        }
+
+        td.divider-cell {
+            width: 1
+        }
+
+        td.center-text {
+            text-align: center; 
+        }
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <div class="container">
+      <img alt="logo" id="myImage" src="https://i.ibb.co/8xyV6WJ/Semgrep-logo.png">
+    </div>
+    <div class="container">
+      <h1 class="center-text" id="sast">Semgrep SAST Scan Report for Repository: local_scan/vulnado</h1>
+      <h2 class="center-text" id="reporttime">Report Generated at 2024-09-04 21:52</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="topnav">
+      <h2 class="center-text" id="sast-summary">SAST Scan Summary</h2>
+      <table border="1" class="centered-table">
+        <tr>
+          <th>Vulnerability Severity</th>
+          <th>Vulnerability Count</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-high">Findings- SAST High Severity</a>
+          </td>
+          <td>37</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-medium">Findings- SAST Medium Severity</a>
+          </td>
+          <td>59</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-low">Findings- SAST Low Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="break-after"></div>
+    <div class="container">
+      <div class="heading">
+        <h2 id="sast-high">Findings Summary- High Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablehigh">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.command-injection-process-builder.command-injection-process-builder'>command-injection-process-builder</a></td>
+      <td>A formatted or concatenated string was detected as input to a ProcessBuilder call. This is dangerous if a variable is controlled by user input and could result in a command injection. Ensure your variables are not controlled by users or sufficiently sanitized.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Cowsay.java#L11'>src/main/java/com/scalesec/vulnado/Cowsay.java#L11</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.formatted-sql-string-deepsemgrep.formatted-sql-string-deepsemgrep'>formatted-sql-string-deepsemgrep</a></td>
+      <td>Untrusted input might be used to build a database query, which can lead to a SQL injection vulnerability. An attacker can execute malicious SQL statements and gain unauthorized access to sensitive data, modify, delete data, or execute arbitrary system commands. To prevent this vulnerability, use prepared statements that do not concatenate user-controllable strings and use parameterized queries where SQL commands and user data are strictly separated. Also, consider using an object-relational (ORM) framework to operate with safer abstractions. To build SQL queries safely in Java, it is possible to adopt prepared statements by using the `java.sql.PreparedStatement` class with bind variables.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L49'>src/main/java/com/scalesec/vulnado/User.java#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.formatted-sql-string.formatted-sql-string'>formatted-sql-string</a></td>
+      <td>Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using &#39;connection.prepareStatement&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L49'>src/main/java/com/scalesec/vulnado/User.java#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.command-injection.tainted-system-command.tainted-system-command'>tainted-system-command</a></td>
+      <td>Untrusted input might be injected into a command executed by the application, which can lead to a command injection vulnerability. An attacker can execute arbitrary commands, potentially gaining complete control of the system. To prevent this vulnerability, avoid executing OS commands with user input. If this is unavoidable, validate and sanitize the input, and use safe methods for executing the commands. For more information, see: [Java command injection prevention](https://semgrep.dev/docs/cheat-sheets/java-command-injection/)</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Cowsay.java#L11'>src/main/java/com/scalesec/vulnado/Cowsay.java#L11</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>User data flows into this manually-constructed SQL string. User data can be safely inserted into SQL strings using prepared statements or an object-relational mapper (ORM). Manually-constructed SQL strings is a possible indicator of SQL injection, which could let an attacker steal or manipulate data from the database. Instead, use prepared statements (`connection.PreparedStatement`) or a safe library.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L47'>src/main/java/com/scalesec/vulnado/User.java#L47</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.injection.tainted-url-host.tainted-url-host'>tainted-url-host</a></td>
+      <td>User data flows into the host portion of this manually-constructed URL. This could allow an attacker to send data to their own server, potentially exposing sensitive data such as cookies or authorization information sent with this request. They could also probe internal servers or other resources that the server runnig this code can access. (This is called server-side request forgery, or SSRF.) Do not allow arbitrary hosts. Instead, create an allowlist for approved hosts hardcode the correct host, or ensure that the user data can only affect the path or parameters.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/LinkLister.java#L26'>src/main/java/com/scalesec/vulnado/LinkLister.java#L26</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.tainted-ssrf-spring-add.tainted-ssrf-spring-add'>tainted-ssrf-spring-add</a></td>
+      <td>Untrusted input might be used to build an HTTP request, which can lead to a Server-side request forgery (SSRF) vulnerability. SSRF allows an attacker to send crafted requests from the server side to other internal or external systems. SSRF can lead to unauthorized access to sensitive data and, in some cases, allow the attacker to control applications or systems that trust the vulnerable service. To prevent this vulnerability, avoid allowing user input to craft the base request. Instead, treat it as part of the path or query parameter and encode it appropriately. When user input is necessary to prepare the HTTP request, perform strict input validation. Additionally, whenever possible, use allowlists to only interact with expected, trusted domains.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/LinkLister.java#L16'>src/main/java/com/scalesec/vulnado/LinkLister.java#L16</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L35'>sqli.js#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L38'>sqli.js#L38</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L41'>sqli.js#L41</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L44'>sqli.js#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L47'>sqli.js#L47</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L50'>sqli.js#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L53'>sqli.js#L53</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L34'>v-sqli.js#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L36'>v-sqli.js#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L39'>v-sqli.js#L39</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L34'>vv-sqli.js#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L36'>vv-sqli.js#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L39'>vv-sqli.js#L39</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L35'>sqli.js#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L38'>sqli.js#L38</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L41'>sqli.js#L41</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L44'>sqli.js#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L47'>sqli.js#L47</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L50'>sqli.js#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/sqli.js#L53'>sqli.js#L53</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L34'>v-sqli.js#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L36'>v-sqli.js#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/v-sqli.js#L39'>v-sqli.js#L39</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L34'>vv-sqli.js#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L36'>vv-sqli.js#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vv-sqli.js#L39'>vv-sqli.js#L39</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L63'>client/index.html#L63</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L67'>client/index.html#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L67'>client/index.html#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L73'>client/index.html#L73</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-medium">Findings Summary- Medium Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablemedium">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.cookie-missing-secure-flag.cookie-missing-secure-flag'>cookie-missing-secure-flag</a></td>
+      <td>A cookie was detected without setting the &#39;secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;secure&#39; flag by calling &#39;cookie.setSecure(true);&#39;</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/newnewnenwbadcookie.java#L23'>vulns/newnewnenwbadcookie.java#L23</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.servlets.security.audit.cookie-secure-flag-false.cookie-secure-flag-false'>cookie-secure-flag-false</a></td>
+      <td>A cookie was detected without setting the &#39;secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;secure&#39; flag by calling &#39;cookie.setSecure(true);&#39;</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/newnewnenwbadcookie.java#L23'>vulns/newnewnenwbadcookie.java#L23</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=generic.html-templates.security.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L63'>client/index.html#L63</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=generic.html-templates.security.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L67'>client/index.html#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=generic.html-templates.security.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L67'>client/index.html#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=generic.html-templates.security.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L73'>client/index.html#L73</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L57'>client/index.html#L57</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L60'>client/index.html#L60</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/login.html#L40'>client/login.html#L40</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/login.html#L43'>client/login.html#L43</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L10'>vulns/new-vul.java#L10</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L19'>vulns/new-vul.java#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L28'>vulns/new-vul.java#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L33'>vulns/new-vul.java#L33</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L35'>vulns/new-vul.java#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L41'>vulns/new-vul.java#L41</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L47'>vulns/new-vul.java#L47</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/new-vul.java#L49'>vulns/new-vul.java#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L10'>vulns/very-new-vul.java#L10</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L19'>vulns/very-new-vul.java#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L28'>vulns/very-new-vul.java#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L33'>vulns/very-new-vul.java#L33</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L35'>vulns/very-new-vul.java#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L41'>vulns/very-new-vul.java#L41</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L47'>vulns/very-new-vul.java#L47</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L54'>vulns/very-new-vul.java#L54</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/very-new-vul.java#L61'>vulns/very-new-vul.java#L61</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/vuln.java#L10'>vulns/vuln.java#L10</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/vuln.java#L20'>vulns/vuln.java#L20</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/vuln.java#L30'>vulns/vuln.java#L30</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/vuln.java#L40'>vulns/vuln.java#L40</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-getstacktrace.active-debug-code-getstacktrace'>active-debug-code-getstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/vuln.java#L50'>vulns/vuln.java#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Comment.java#L55'>src/main/java/com/scalesec/vulnado/Comment.java#L55</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Comment.java#L70'>src/main/java/com/scalesec/vulnado/Comment.java#L70</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Cowsay.java#L24'>src/main/java/com/scalesec/vulnado/Cowsay.java#L24</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Postgres.java#L25'>src/main/java/com/scalesec/vulnado/Postgres.java#L25</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Postgres.java#L100'>src/main/java/com/scalesec/vulnado/Postgres.java#L100</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Postgres.java#L114'>src/main/java/com/scalesec/vulnado/Postgres.java#L114</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L34'>src/main/java/com/scalesec/vulnado/User.java#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.active-debug-code-printstacktrace.active-debug-code-printstacktrace'>active-debug-code-printstacktrace</a></td>
+      <td>Possible active debug code detected. Deploying an application with debug code can create unintended entry points or expose sensitive information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L58'>src/main/java/com/scalesec/vulnado/User.java#L58</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.cookie-missing-secure-flag.cookie-missing-secure-flag'>cookie-missing-secure-flag</a></td>
+      <td>A cookie was detected without setting the &#39;secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;secure&#39; flag by calling &#39;cookie.setSecure(true);&#39;</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/cookie-secure-flag.java#L23'>vulns/cookie-secure-flag.java#L23</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.crypto.use-of-md5.use-of-md5'>use-of-md5</a></td>
+      <td>Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use HMAC instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/Postgres.java#L67'>src/main/java/com/scalesec/vulnado/Postgres.java#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.sqli.jdbc-sqli.jdbc-sqli'>jdbc-sqli</a></td>
+      <td>Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using &#39;connection.prepareStatement&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/User.java#L49'>src/main/java/com/scalesec/vulnado/User.java#L49</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.servlets.security.audit.cookie-secure-flag-false.cookie-secure-flag-false'>cookie-secure-flag-false</a></td>
+      <td>A cookie was detected without setting the &#39;secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;secure&#39; flag by calling &#39;cookie.setSecure(true);&#39;</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/cookie-secure-flag.java#L23'>vulns/cookie-secure-flag.java#L23</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.unrestricted-request-mapping.unrestricted-request-mapping'>unrestricted-request-mapping</a></td>
+      <td>Detected a method annotated with &#39;RequestMapping&#39; that does not specify the HTTP method. CSRF protections are not enabled for GET, HEAD, TRACE, or OPTIONS, and by default all HTTP methods are allowed when the HTTP method is not explicitly specified. This means that a method that performs state changes could be vulnerable to CSRF attacks. To mitigate, add the &#39;method&#39; field and specify the HTTP method (such as &#39;RequestMethod.POST&#39;).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/CowController.java#L11'>src/main/java/com/scalesec/vulnado/CowController.java#L11</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.unrestricted-request-mapping.unrestricted-request-mapping'>unrestricted-request-mapping</a></td>
+      <td>Detected a method annotated with &#39;RequestMapping&#39; that does not specify the HTTP method. CSRF protections are not enabled for GET, HEAD, TRACE, or OPTIONS, and by default all HTTP methods are allowed when the HTTP method is not explicitly specified. This means that a method that performs state changes could be vulnerable to CSRF attacks. To mitigate, add the &#39;method&#39; field and specify the HTTP method (such as &#39;RequestMethod.POST&#39;).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/LinksController.java#L15'>src/main/java/com/scalesec/vulnado/LinksController.java#L15</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.spring.security.unrestricted-request-mapping.unrestricted-request-mapping'>unrestricted-request-mapping</a></td>
+      <td>Detected a method annotated with &#39;RequestMapping&#39; that does not specify the HTTP method. CSRF protections are not enabled for GET, HEAD, TRACE, or OPTIONS, and by default all HTTP methods are allowed when the HTTP method is not explicitly specified. This means that a method that performs state changes could be vulnerable to CSRF attacks. To mitigate, add the &#39;method&#39; field and specify the HTTP method (such as &#39;RequestMethod.POST&#39;).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/src/main/java/com/scalesec/vulnado/LinksController.java#L19'>src/main/java/com/scalesec/vulnado/LinksController.java#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.explicit-unescape.template-explicit-unescape'>template-explicit-unescape</a></td>
+      <td>Detected an explicit unescape in a Mustache template, using triple braces &#39;{{{...}}}&#39; or ampersand &#39;&amp;&#39;. If external data can reach these locations, your application is exposed to a cross-site scripting (XSS) vulnerability. If you must do this, ensure no external data can reach this location.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/client/index.html#L73'>client/index.html#L73</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.hardcoded-salt.hardcoded-salt'>hardcoded-salt</a></td>
+      <td>Cryptographic operations were identified that leverage a hardcoded salt/nonce. A salt does not need to remain secret, but should be random, generated from cryptographically secure sources of entropy, such as an CSPRNG. On iOS/macOS platforms, secure random data can be obtained via the `SecCopyRandomBytes` API available from RandomizationServices.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L60'>vulns/hardcoded_secrets.swift#L60</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.hardcoded-salt.hardcoded-salt'>hardcoded-salt</a></td>
+      <td>Cryptographic operations were identified that leverage a hardcoded salt/nonce. A salt does not need to remain secret, but should be random, generated from cryptographically secure sources of entropy, such as an CSPRNG. On iOS/macOS platforms, secure random data can be obtained via the `SecCopyRandomBytes` API available from RandomizationServices.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L74'>vulns/hardcoded_secrets.swift#L74</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.hardcoded-symmetric-key.hardcoded-symmetric-key'>hardcoded-symmetric-key</a></td>
+      <td>A hard-coded cryptographic key was detected. An attacker that obtains this key via reverse engineering or access to source code will be able to re-use this key to encrypt, decrypt, and/or sign data at will. Cryptographic keys should be unique, and randomly generated per user, per client.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L21'>vulns/hardcoded_secrets.swift#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.hardcoded-symmetric-key.hardcoded-symmetric-key'>hardcoded-symmetric-key</a></td>
+      <td>A hard-coded cryptographic key was detected. An attacker that obtains this key via reverse engineering or access to source code will be able to re-use this key to encrypt, decrypt, and/or sign data at will. Cryptographic keys should be unique, and randomly generated per user, per client.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L57'>vulns/hardcoded_secrets.swift#L57</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.insecure-crypto-aes-keysize.insecure-crypto-aes-keysize'>insecure-crypto-aes-keysize</a></td>
+      <td>AES symmetric cryptographic operations were identified using a key size of 128bit which is less than the industry standard recommendation of 256bit.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L22'>vulns/hardcoded_secrets.swift#L22</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.insecure-crypto-aes-keysize.insecure-crypto-aes-keysize'>insecure-crypto-aes-keysize</a></td>
+      <td>AES symmetric cryptographic operations were identified using a key size of 128bit which is less than the industry standard recommendation of 256bit.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L40'>vulns/hardcoded_secrets.swift#L40</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.insecure-crypto-cbc-mode.insecure-crypto-cbc-mode'>insecure-crypto-cbc-mode</a></td>
+      <td>Symmetric cryptographic operations were identified that use Cipher Block Chaining (CBC) mode. AES in CBC mode provides unauthenticated cryptographic encryption. CBC is also malleable, meaning that an attacker can influence the decrypted plaintext by modifying bits of the ciphertext (bit flipping attacks). Consider using an authenticated encryption mechanism, such as AES-GCM or ChaChaPoly. If CBC mode is **required**, consider augmenting the encryption with authentication by signing the ciphertexts with a Message Authentication Code (e.g. HMAC).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L16'>vulns/hardcoded_secrets.swift#L16</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=swift.commoncrypto.insecure-crypto-cbc-mode.insecure-crypto-cbc-mode'>insecure-crypto-cbc-mode</a></td>
+      <td>Symmetric cryptographic operations were identified that use Cipher Block Chaining (CBC) mode. AES in CBC mode provides unauthenticated cryptographic encryption. CBC is also malleable, meaning that an attacker can influence the decrypted plaintext by modifying bits of the ciphertext (bit flipping attacks). Consider using an authenticated encryption mechanism, such as AES-GCM or ChaChaPoly. If CBC mode is **required**, consider augmenting the encryption with authentication by signing the ciphertexts with a Message Authentication Code (e.g. HMAC).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/vulns/hardcoded_secrets.swift#L34'>vulns/hardcoded_secrets.swift#L34</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=terraform.aws.security.aws-subnet-has-public-ip-address.aws-subnet-has-public-ip-address'>aws-subnet-has-public-ip-address</a></td>
+      <td>Resources in the AWS subnet are assigned a public IP address. Resources should not be exposed on the public internet, but should have access limited to consumers required for the function of your application. Set `map_public_ip_on_launch` to false so that resources are not publicly-accessible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/reverse_shell/main.tf#L33'>reverse_shell/main.tf#L33</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=yaml.docker-compose.security.no-new-privileges.no-new-privileges'>no-new-privileges</a></td>
+      <td>Service &#39;db&#39; allows for privilege escalation via setuid or setgid binaries. Add &#39;no-new-privileges:true&#39; in &#39;security_opt&#39; to prevent this.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/docker-compose.yml#L23'>docker-compose.yml#L23</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service'>writable-filesystem-service</a></td>
+      <td>Service &#39;db&#39; is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add &#39;read_only: true&#39; to this service to prevent this.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>master</td>
+      <td><a href='https://github.com/nnayar-r2c/vulnado/blob/master/docker-compose.yml#L23'>docker-compose.yml#L23</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-low">Findings Summary- Low Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablelow">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+    </div>
+  </body>
+</html>

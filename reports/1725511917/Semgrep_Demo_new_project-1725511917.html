@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semgrep SAST Scan Report for Repository: Semgrep-Demo/new-project</title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container-table {
+            display: grid; /* Use CSS Grid */
+            place-items: center; /* Center both horizontally and vertically */
+        }
+
+        .full-width {
+            width: 100%
+        }
+
+        .my_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .my_table th, .my_table td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        .my_table th {
+            background-color: #f2f2f2;
+        }
+        #myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%; /* or any desired width */
+            height: auto; /* to maintain the aspect ratio */
+        }
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A {
+            background-color: green;
+            color: white; /* For better readability */
+        }
+        .grade-B {
+            background-color: yellow;
+            color: black; /* Adjust color for readability */
+        }
+        .grade-C {
+            background-color: orange;
+            color: white;
+        }
+        .grade-D {
+            background-color: red;
+            color: white;
+        }
+        .grade-F {
+            background-color: darkred;
+            color: white;
+        }
+        .break-after {
+            page-break-after: always;
+        }
+
+        td.divider-cell {
+            width: 1
+        }
+
+        td.center-text {
+            text-align: center; 
+        }
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <div class="container">
+      <img alt="logo" id="myImage" src="https://i.ibb.co/8xyV6WJ/Semgrep-logo.png">
+    </div>
+    <div class="container">
+      <h1 class="center-text" id="sast">Semgrep SAST Scan Report for Repository: Semgrep-Demo/new-project</h1>
+      <h2 class="center-text" id="reporttime">Report Generated at 2024-09-04 21:52</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="topnav">
+      <h2 class="center-text" id="sast-summary">SAST Scan Summary</h2>
+      <table border="1" class="centered-table">
+        <tr>
+          <th>Vulnerability Severity</th>
+          <th>Vulnerability Count</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-high">Findings- SAST High Severity</a>
+          </td>
+          <td>12</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-medium">Findings- SAST Medium Severity</a>
+          </td>
+          <td>21</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-low">Findings- SAST Low Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="break-after"></div>
+    <div class="container">
+      <div class="heading">
+        <h2 id="sast-high">Findings Summary- High Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablehigh">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.grpc.security.grpc-server-insecure-connection.grpc-server-insecure-connection'>grpc-server-insecure-connection</a></td>
+      <td>Found an insecure gRPC server without &#39;grpc.Creds()&#39; or options with credentials. This allows for a connection without encryption to this server. A malicious attacker could tamper with the gRPC message, which could compromise the machine. Include credentials derived from an SSL certificate in order to create a secure gRPC connection. You can create credentials using &#39;credentials.NewServerTLSFromFile(&quot;cert.pem&quot;, &quot;cert.key&quot;)&#39;.</td>
+      <td>high</td>
+      <td>reviewing</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/shippingservice/main.go#L85'>src/shippingservice/main.go#L85</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.grpc.security.grpc-server-insecure-connection.grpc-server-insecure-connection'>grpc-server-insecure-connection</a></td>
+      <td>Found an insecure gRPC server without &#39;grpc.Creds()&#39; or options with credentials. This allows for a connection without encryption to this server. A malicious attacker could tamper with the gRPC message, which could compromise the machine. Include credentials derived from an SSL certificate in order to create a secure gRPC connection. You can create credentials using &#39;credentials.NewServerTLSFromFile(&quot;cert.pem&quot;, &quot;cert.key&quot;)&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/shippingservice/main.go#L88'>src/shippingservice/main.go#L88</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dockerfile.security.missing-user-entrypoint.missing-user-entrypoint'>missing-user-entrypoint</a></td>
+      <td>By not specifying a USER, a program in the container may run as &#39;root&#39;. This is a security hazard. If an attacker can control a process running as root, they may have control over the container. Ensure that the last USER in a Dockerfile is a USER other than &#39;root&#39;.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/loadgenerator/Dockerfile#L35'>src/loadgenerator/Dockerfile#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.grpc.security.grpc-nodejs-insecure-connection.grpc-nodejs-insecure-connection'>grpc-nodejs-insecure-connection</a></td>
+      <td>Found an insecure gRPC connection. This creates a connection without encryption to a gRPC client/server. A malicious attacker could tamper with the gRPC message, which could compromise the machine.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/currencyservice/client.js#L21'>src/currencyservice/client.js#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.sleep.arbitrary-sleep'>arbitrary-sleep</a></td>
+      <td>time.sleep() call; did you mean to leave this in?</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/emailservice/email_server.py#L134'>src/emailservice/email_server.py#L134</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.sleep.arbitrary-sleep'>arbitrary-sleep</a></td>
+      <td>time.sleep() call; did you mean to leave this in?</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/emailservice/email_server.py#L158'>src/emailservice/email_server.py#L158</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.sleep.arbitrary-sleep'>arbitrary-sleep</a></td>
+      <td>time.sleep() call; did you mean to leave this in?</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/recommendationservice/recommendation_server.py#L61'>src/recommendationservice/recommendation_server.py#L61</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.lang.best-practice.sleep.arbitrary-sleep'>arbitrary-sleep</a></td>
+      <td>time.sleep() call; did you mean to leave this in?</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/recommendationservice/recommendation_server.py#L151'>src/recommendationservice/recommendation_server.py#L151</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.servlets.security.crlf-injection-logs-deepsemgrep.crlf-injection-logs-deepsemgrep'>crlf-injection-logs-deepsemgrep</a></td>
+      <td>When data from an untrusted source is put into a logger and not neutralized correctly, an attacker could forge log entries or include malicious content.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>refs/pull/2/merge</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/merge/src/assistant-fix-custom-message.java#L14'>src/assistant-fix-custom-message.java#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=semgrep_demo.crlf-injection-logs-deepsemgrep-javaorg-copy'>crlf-injection-logs-deepsemgrep-javaorg-copy</a></td>
+      <td>When data from an untrusted source is put into a logger and not neutralized correctly, an attacker could forge log entries or include malicious content. Please use the Jsoup.clean() function to sanitize data.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>refs/pull/2/merge</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/merge/src/assistant-fix-custom-message.java#L14'>src/assistant-fix-custom-message.java#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.injection.tainted-sql-string.tainted-sql-string'>tainted-sql-string</a></td>
+      <td>Detected user input used to manually construct a SQL string. This is usually bad practice because manual construction could accidentally result in a SQL injection. An attacker could use a SQL injection to steal or modify contents of the database. Instead, use a parameterized query which is available by default in most database engines. Alternatively, consider using an object-relational mapper (ORM) such as Sequelize which will protect your queries.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>refs/pull/1/merge</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/merge/src/assistant-fix-sqli-sequelize.ts#L5'>src/assistant-fix-sqli-sequelize.ts#L5</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.sequelize.security.audit.sequelize-injection-express.express-sequelize-injection'>express-sequelize-injection</a></td>
+      <td>Detected a sequelize statement that is tainted by user-input. This could lead to SQL injection if the variable is user-controlled and is not properly sanitized. In order to prevent SQL injection, it is recommended to use parameterized queries or prepared statements.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>refs/pull/1/merge</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/merge/src/assistant-fix-sqli-sequelize.ts#L5'>src/assistant-fix-sqli-sequelize.ts#L5</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-medium">Findings Summary- Medium Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablemedium">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal'>path-join-resolve-traversal</a></td>
+      <td>Detected possible user input going into a `path.join` or `path.resolve` function. This could possibly lead to a path traversal vulnerability,  where the attacker can access arbitrary files stored in the file system. Instead, be sure to sanitize or validate user input first.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/paymentservice/server.js#L37'>src/paymentservice/server.js#L37</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.path-traversal.path-join-resolve-traversal.path-join-resolve-traversal'>path-join-resolve-traversal</a></td>
+      <td>Detected possible user input going into a `path.join` or `path.resolve` function. This could possibly lead to a path traversal vulnerability,  where the attacker can access arbitrary files stored in the file system. Instead, be sure to sanitize or validate user input first.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/paymentservice/server.js#L38'>src/paymentservice/server.js#L38</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.crypto.math_random.math-random-used'>math-random-used</a></td>
+      <td>Do not use `math/rand`. Use `crypto/rand` instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/handlers.go#L21'>src/frontend/handlers.go#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.crypto.math_random.math-random-used'>math-random-used</a></td>
+      <td>Do not use `math/rand`. Use `crypto/rand` instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/shippingservice/tracker.go#L19'>src/shippingservice/tracker.go#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-httponly.cookie-missing-httponly'>cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Cookie.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/handlers.go#L418'>src/frontend/handlers.go#L418</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-httponly.cookie-missing-httponly'>cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Cookie.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/middleware.go#L97'>src/frontend/middleware.go#L97</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-secure.cookie-missing-secure'>cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/handlers.go#L418'>src/frontend/handlers.go#L418</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-secure.cookie-missing-secure'>cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/middleware.go#L97'>src/frontend/middleware.go#L97</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.use-tls.use-tls'>use-tls</a></td>
+      <td>Found an HTTP server without TLS. Use &#39;http.ListenAndServeTLS&#39; instead. See https://golang.org/pkg/net/http/#ListenAndServeTLS for more information.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/main.go#L159'>src/frontend/main.go#L159</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/ad.html#L21'>src/frontend/templates/ad.html#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/ad.html#L21'>src/frontend/templates/ad.html#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/cart.html#L45'>src/frontend/templates/cart.html#L45</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/header.html#L71'>src/frontend/templates/header.html#L71</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/product.html#L38'>src/frontend/templates/product.html#L38</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2'>direct-use-of-jinja2</a></td>
+      <td>Detected direct use of jinja2. If not done properly, this may bypass HTML escaping which opens up the application to cross-site scripting (XSS) vulnerabilities. Prefer using the Flask method &#39;render_template()&#39; and templates with a &#39;.html&#39; extension in order to prevent XSS.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/emailservice/email_server.py#L45'>src/emailservice/email_server.py#L45</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.direct-use-of-jinja2.direct-use-of-jinja2'>direct-use-of-jinja2</a></td>
+      <td>Detected direct use of jinja2. If not done properly, this may bypass HTML escaping which opens up the application to cross-site scripting (XSS) vulnerabilities. Prefer using the Flask method &#39;render_template()&#39; and templates with a &#39;.html&#39; extension in order to prevent XSS.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/emailservice/email_server.py#L90'>src/emailservice/email_server.py#L90</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use &#39;url_for()&#39; to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/templates/ad.html#L21'>src/frontend/templates/ad.html#L21</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=trailofbits.go.string-to-int-signedness-cast.string-to-int-signedness-cast'>string-to-int-signedness-cast</a></td>
+      <td>Downcasting or changing sign of an integer with `$CAST_METHOD` method</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/handlers.go#L214'>src/frontend/handlers.go#L214</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.contexttodo.context-todo'>context-todo</a></td>
+      <td>Consider to use well-defined context</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/checkoutservice/main.go#L357'>src/checkoutservice/main.go#L357</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.net.dos.slowloris-dos-functions.slowloris-dos-functions'>slowloris-dos-functions</a></td>
+      <td>These functions do not allow to set a a timeout value for reading requests. As a result, the app server may be vulnerable to a Slowloris Denial-of-Service (DoS) attack. Slowloris attacks exploit the fact that HTTP servers keep the connection active if the request received is incomplete. To mitigate this, implement a `Server` and set the timeout with `ReadHeaderTimeout`.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/main/src/frontend/main.go#L159'>src/frontend/main.go#L159</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=java.lang.security.audit.crlf-injection-logs.crlf-injection-logs'>crlf-injection-logs</a></td>
+      <td>When data from an untrusted source is put into a logger and not neutralized correctly, an attacker could forge log entries or include malicious content.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>refs/pull/2/merge</td>
+      <td><a href='https://github.com/Semgrep-Demo/new-project/blob/merge/src/assistant-fix-custom-message.java#L13'>src/assistant-fix-custom-message.java#L13</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-low">Findings Summary- Low Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablelow">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+    </div>
+  </body>
+</html>

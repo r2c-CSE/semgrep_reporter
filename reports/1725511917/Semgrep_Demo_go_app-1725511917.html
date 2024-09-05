@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Semgrep SAST Scan Report for Repository: Semgrep-Demo/go-app</title>
+    <link href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" rel="stylesheet">
+    <style>
+        .container-table {
+            display: grid; /* Use CSS Grid */
+            place-items: center; /* Center both horizontally and vertically */
+        }
+
+        .full-width {
+            width: 100%
+        }
+
+        .my_table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .my_table th, .my_table td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        .my_table th {
+            background-color: #f2f2f2;
+        }
+        #myImage {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 75%; /* or any desired width */
+            height: auto; /* to maintain the aspect ratio */
+        }
+        .centered-table {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+        th, td {
+            border: 1px solid black;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        .grade-A {
+            background-color: green;
+            color: white; /* For better readability */
+        }
+        .grade-B {
+            background-color: yellow;
+            color: black; /* Adjust color for readability */
+        }
+        .grade-C {
+            background-color: orange;
+            color: white;
+        }
+        .grade-D {
+            background-color: red;
+            color: white;
+        }
+        .grade-F {
+            background-color: darkred;
+            color: white;
+        }
+        .break-after {
+            page-break-after: always;
+        }
+
+        td.divider-cell {
+            width: 1
+        }
+
+        td.center-text {
+            text-align: center; 
+        }
+        @page {
+            size: letter landscape;
+            margin: 2cm;
+        }
+        </style>
+  </head>
+  <body>
+    <div class="spacer"></div>
+    <div class="container">
+      <img alt="logo" id="myImage" src="https://i.ibb.co/8xyV6WJ/Semgrep-logo.png">
+    </div>
+    <div class="container">
+      <h1 class="center-text" id="sast">Semgrep SAST Scan Report for Repository: Semgrep-Demo/go-app</h1>
+      <h2 class="center-text" id="reporttime">Report Generated at 2024-09-04 21:52</h2>
+    </div>
+    <div class="spacer"></div>
+    <div class="topnav">
+      <h2 class="center-text" id="sast-summary">SAST Scan Summary</h2>
+      <table border="1" class="centered-table">
+        <tr>
+          <th>Vulnerability Severity</th>
+          <th>Vulnerability Count</th>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-high">Findings- SAST High Severity</a>
+          </td>
+          <td>10</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-medium">Findings- SAST Medium Severity</a>
+          </td>
+          <td>60</td>
+        </tr>
+        <tr>
+          <td>
+            <a href="#sast-low">Findings- SAST Low Severity</a>
+          </td>
+          <td>0</td>
+        </tr>
+      </table>
+    </div>
+    <div class="break-after"></div>
+    <div class="container">
+      <div class="heading">
+        <h2 id="sast-high">Findings Summary- High Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablehigh">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.remote-property-injection.remote-property-injection'>remote-property-injection</a></td>
+      <td>Bracket object notation with user input is present, this might allow an attacker to access all properties of the object and even it&#39;s prototype. Use literal values for object properties.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L4'>public/js/jquery-3.2.1-min.js#L4</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.sqli.gosql-sqli.gosql-sqli'>gosql-sqli</a></td>
+      <td>Detected string concatenation with a non-literal variable in a &quot;database/sql&quot; Go SQL statement. This could lead to SQL injection if the variable is user-controlled and not properly sanitized. In order to prevent SQL injection, use parameterized queries or prepared statements instead. You can use prepared statements with the &#39;Prepare&#39; and &#39;PrepareContext&#39; calls.</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/database/database.go#L24'>util/database/database.go#L24</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.header.html#L13'>templates/template.header.html#L13</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.var-in-script-tag.var-in-script-tag'>var-in-script-tag</a></td>
+      <td>Detected a template variable used in a script tag. Although template variables are HTML escaped, HTML escaping does not always prevent cross-site scripting (XSS) attacks when used directly in JavaScript. If you need this data on the rendered page, consider placing it in the HTML portion (outside of a script tag). Alternatively, use a JavaScript-specific encoder, such as the one available in OWASP ESAPI. For Django, you may also consider using the &#39;json_script&#39; template tag and retrieving the data in your script by using the element ID (e.g., `document.getElementById`).</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.header.html#L14'>templates/template.header.html#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.errnilcheck.err-nil-check'>err-nil-check</a></td>
+      <td>superfluous nil err check before return</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/setup/function.go#L58'>setup/function.go#L58</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.errnilcheck.err-nil-check'>err-nil-check</a></td>
+      <td>superfluous nil err check before return</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/setup/function.go#L74'>setup/function.go#L74</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.errnilcheck.err-nil-check'>err-nil-check</a></td>
+      <td>superfluous nil err check before return</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/idor/function.go#L50'>vulnerability/idor/function.go#L50</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.errnilcheck.err-nil-check'>err-nil-check</a></td>
+      <td>superfluous nil err check before return</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/idor/function.go#L76'>vulnerability/idor/function.go#L76</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.errnilcheck.err-nil-check'>err-nil-check</a></td>
+      <td>superfluous nil err check before return</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/sqli/function.go#L76'>vulnerability/sqli/function.go#L76</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=dgryski.semgrep-go.ioutil.deprecated-ioutil-readfile'>deprecated-ioutil-readfile</a></td>
+      <td>ioutil.ReadFile is deprecated</td>
+      <td>high</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/config/config.go#L24'>util/config/config.go#L24</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-medium">Findings Summary- Medium Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablemedium">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.gorilla.security.audit.session-cookie-missing-httponly.session-cookie-missing-httponly'>session-cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/user/session/session.go#L28'>user/session/session.go#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.gorilla.security.audit.session-cookie-missing-httponly.session-cookie-missing-httponly'>session-cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/user/session/session.go#L67'>user/session/session.go#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.gorilla.security.audit.session-cookie-missing-secure.session-cookie-missing-secure'>session-cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/user/session/session.go#L28'>user/session/session.go#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.gorilla.security.audit.session-cookie-missing-secure.session-cookie-missing-secure'>session-cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/user/session/session.go#L67'>user/session/session.go#L67</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.crypto.use_of_weak_crypto.use-of-md5'>use-of-md5</a></td>
+      <td>Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/user/user.go#L160'>user/user.go#L160</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.crypto.use_of_weak_crypto.use-of-md5'>use-of-md5</a></td>
+      <td>Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/csa/csa.go#L62'>vulnerability/csa/csa.go#L62</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.crypto.use_of_weak_crypto.use-of-md5'>use-of-md5</a></td>
+      <td>Detected MD5 hash algorithm which is considered insecure. MD5 is not collision resistant and is therefore not suitable as a cryptographic signature. Use SHA256 or SHA3 instead.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/idor/idor.go#L164'>vulnerability/idor/idor.go#L164</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.database.string-formatted-query.string-formatted-query'>string-formatted-query</a></td>
+      <td>String-formatted SQL query detected. This could lead to SQL injection if the string is not sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/database/database.go#L24'>util/database/database.go#L24</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.database.string-formatted-query.string-formatted-query'>string-formatted-query</a></td>
+      <td>String-formatted SQL query detected. This could lead to SQL injection if the string is not sanitized properly. Audit this call to ensure the SQL is not manipulable by external data.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/sqli/function.go#L37'>vulnerability/sqli/function.go#L37</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-httponly.cookie-missing-httponly'>cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Cookie.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/cookie.go#L32'>util/cookie.go#L32</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-httponly.cookie-missing-httponly'>cookie-missing-httponly</a></td>
+      <td>A session cookie was detected without setting the &#39;HttpOnly&#39; flag. The &#39;HttpOnly&#39; flag for cookies instructs the browser to forbid client-side scripts from reading the cookie which mitigates XSS attacks. Set the &#39;HttpOnly&#39; flag by setting &#39;HttpOnly&#39; to &#39;true&#39; in the Cookie.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/cookie.go#L48'>util/cookie.go#L48</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-secure.cookie-missing-secure'>cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/cookie.go#L32'>util/cookie.go#L32</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.cookie-missing-secure.cookie-missing-secure'>cookie-missing-secure</a></td>
+      <td>A session cookie was detected without setting the &#39;Secure&#39; flag. The &#39;secure&#39; flag for cookies prevents the client from transmitting the cookie over insecure channels such as HTTP. Set the &#39;Secure&#39; flag by setting &#39;Secure&#39; to &#39;true&#39; in the Options struct.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/cookie.go#L48'>util/cookie.go#L48</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.formatted-template-string.formatted-template-string'>formatted-template-string</a></td>
+      <td>Found a formatted template string passed to &#39;template.HTML()&#39;. &#39;template.HTML()&#39; does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L52'>vulnerability/xss/xss.go#L52</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.formatted-template-string.formatted-template-string'>formatted-template-string</a></td>
+      <td>Found a formatted template string passed to &#39;template.HTML()&#39;. &#39;template.HTML()&#39; does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L53'>vulnerability/xss/xss.go#L53</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.formatted-template-string.formatted-template-string'>formatted-template-string</a></td>
+      <td>Found a formatted template string passed to &#39;template.HTML()&#39;. &#39;template.HTML()&#39; does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L61'>vulnerability/xss/xss.go#L61</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.net.formatted-template-string.formatted-template-string'>formatted-template-string</a></td>
+      <td>Found a formatted template string passed to &#39;template.HTML()&#39;. &#39;template.HTML()&#39; does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L96'>vulnerability/xss/xss.go#L96</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.no-direct-write-to-responsewriter.no-direct-write-to-responsewriter'>no-direct-write-to-responsewriter</a></td>
+      <td>Detected directly writing or similar in &#39;http.ResponseWriter.write()&#39;. This bypasses HTML escaping that prevents cross-site scripting vulnerabilities. Instead, use the &#39;html/template&#39; package and render data using &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/template.go#L35'>util/template.go#L35</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/util/template.go#L45'>util/template.go#L45</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L58'>vulnerability/xss/xss.go#L58</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L59'>vulnerability/xss/xss.go#L59</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L62'>vulnerability/xss/xss.go#L62</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L63'>vulnerability/xss/xss.go#L63</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.audit.xss.template-html-does-not-escape.unsafe-template-type'>unsafe-template-type</a></td>
+      <td>Semgrep could not determine that the argument to &#39;template.HTML()&#39; is a constant. &#39;template.HTML()&#39; and similar does not escape contents. Be absolutely sure there is no user-controlled data in this template. If user data can reach this template, you may have a XSS vulnerability. Instead, do not use this function and use &#39;template.Execute()&#39;.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L100'>vulnerability/xss/xss.go#L100</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.lang.security.injection.raw-html-format.raw-html-format'>raw-html-format</a></td>
+      <td>Detected user input flowing into a manually constructed HTML string. You may be accidentally bypassing secure methods of rendering HTML by manually constructing HTML and this could create a cross-site scripting vulnerability, which could let attackers steal sensitive user data. Use the `html/template` package which will safely render HTML instead, or inspect that the HTML is rendered safely.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L96'>vulnerability/xss/xss.go#L96</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=go.net.xss.formatted-template-string-taint.formatted-template-string-taint'>formatted-template-string-taint</a></td>
+      <td>Untrusted input could be used to tamper with a web page rendering, which can lead to a Cross-site scripting (XSS) vulnerability. XSS vulnerabilities occur when untrusted input executes malicious JavaScript code, leading to issues such as account compromise and sensitive information leakage. To prevent this vulnerability, validate the user input, perform contextual output encoding or sanitize the input. For more information, see: [Go XSS prevention](https://semgrep.dev/docs/cheat-sheets/go-xss/).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L100'>vulnerability/xss/xss.go#L100</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/cart.html#L7'>templates/cart.html#L7</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.login.html#L7'>templates/template.login.html#L7</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.audit.missing-integrity.missing-integrity'>missing-integrity</a></td>
+      <td>This tag is missing an &#39;integrity&#39; subresource integrity attribute. The &#39;integrity&#39; attribute allows for the browser to verify that externally hosted files (for example from a CDN) are delivered without unexpected manipulation. Without this attribute, if an attacker can modify the externally hosted resource, this could lead to XSS and other types of attacks. To prevent this, include the base64-encoded cryptographic hash of the resource (file) you’re telling the browser to fetch in the &#39;integrity&#39; attribute for all externally hosted files.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.login.html#L8'>templates/template.login.html#L8</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.plaintext-http-link.plaintext-http-link'>plaintext-http-link</a></td>
+      <td>This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.idor1.html#L56'>templates/template.idor1.html#L56</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.plaintext-http-link.plaintext-http-link'>plaintext-http-link</a></td>
+      <td>This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.idor2.html#L57'>templates/template.idor2.html#L57</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.plaintext-http-link.plaintext-http-link'>plaintext-http-link</a></td>
+      <td>This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sqli1.html#L19'>templates/template.sqli1.html#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.plaintext-http-link.plaintext-http-link'>plaintext-http-link</a></td>
+      <td>This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sqli2.html#L18'>templates/template.sqli2.html#L18</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=html.security.plaintext-http-link.plaintext-http-link'>plaintext-http-link</a></td>
+      <td>This link points to a plaintext HTTP URL. Prefer an encrypted HTTPS URL if possible.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sqli2.html#L19'>templates/template.sqli2.html#L19</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/setup.sidebar.html#L12'>templates/setup.sidebar.html#L12</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/setup.sidebar.html#L18'>templates/setup.sidebar.html#L18</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L12'>templates/template.sidebar.html#L12</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L18'>templates/template.sidebar.html#L18</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L27'>templates/template.sidebar.html#L27</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L28'>templates/template.sidebar.html#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L36'>templates/template.sidebar.html#L36</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L37'>templates/template.sidebar.html#L37</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L44'>templates/template.sidebar.html#L44</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L45'>templates/template.sidebar.html#L45</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L56'>templates/template.sidebar.html#L56</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L63'>templates/template.sidebar.html#L63</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.express.security.audit.xss.mustache.var-in-href.var-in-href'>var-in-href</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. If using a relative URL, start with a literal forward slash and concatenate the URL, like this: href=&#39;/{{link}}&#39;. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L68'>templates/template.sidebar.html#L68</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp'>detect-non-literal-regexp</a></td>
+      <td>RegExp() called with a `a` function argument, this might allow an attacker to cause a Regular Expression Denial-of-Service (ReDoS) within your application as RegExP blocks the main thread. For this reason, it is recommended to use hardcoded regexes instead. If your regex is run on user-controlled input, consider performing input validation or use a regex checking/sanitization library such as https://www.npmjs.com/package/recheck to verify that the regex does not appear vulnerable to ReDoS.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L2'>public/js/jquery-3.2.1-min.js#L2</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp'>detect-non-literal-regexp</a></td>
+      <td>RegExp() called with a `b` function argument, this might allow an attacker to cause a Regular Expression Denial-of-Service (ReDoS) within your application as RegExP blocks the main thread. For this reason, it is recommended to use hardcoded regexes instead. If your regex is run on user-controlled input, consider performing input validation or use a regex checking/sanitization library such as https://www.npmjs.com/package/recheck to verify that the regex does not appear vulnerable to ReDoS.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L3'>public/js/jquery-3.2.1-min.js#L3</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.detect-non-literal-regexp.detect-non-literal-regexp'>detect-non-literal-regexp</a></td>
+      <td>RegExp() called with a `b` function argument, this might allow an attacker to cause a Regular Expression Denial-of-Service (ReDoS) within your application as RegExP blocks the main thread. For this reason, it is recommended to use hardcoded regexes instead. If your regex is run on user-controlled input, consider performing input validation or use a regex checking/sanitization library such as https://www.npmjs.com/package/recheck to verify that the regex does not appear vulnerable to ReDoS.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L4'>public/js/jquery-3.2.1-min.js#L4</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.prototype-pollution.prototype-pollution-loop.prototype-pollution-loop'>prototype-pollution-loop</a></td>
+      <td>Possibility of prototype polluting function detected. By adding or modifying attributes of an object prototype, it is possible to create attributes that exist on every object, or replace critical attributes with malicious ones. This can be problematic if the software depends on existence or non-existence of certain attributes, or uses pre-defined attributes of object prototype (such as hasOwnProperty, toString or valueOf). Possible mitigations might be: freezing the object prototype, using an object without prototypes (via Object.create(null) ), blocking modifications of attributes that resolve to object prototype, using Map instead of object.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L2'>public/js/jquery-3.2.1-min.js#L2</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=javascript.lang.security.audit.prototype-pollution.prototype-pollution-loop.prototype-pollution-loop'>prototype-pollution-loop</a></td>
+      <td>Possibility of prototype polluting function detected. By adding or modifying attributes of an object prototype, it is possible to create attributes that exist on every object, or replace critical attributes with malicious ones. This can be problematic if the software depends on existence or non-existence of certain attributes, or uses pre-defined attributes of object prototype (such as hasOwnProperty, toString or valueOf). Possible mitigations might be: freezing the object prototype, using an object without prototypes (via Object.create(null) ), blocking modifications of attributes that resolve to object prototype, using Map instead of object.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/public/js/jquery-3.2.1-min.js#L2'>public/js/jquery-3.2.1-min.js#L2</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L28'>templates/template.sidebar.html#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.audit.xss.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use the &#39;url&#39; template tag to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L37'>templates/template.sidebar.html#L37</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.django.security.django-no-csrf-token.django-no-csrf-token'>django-no-csrf-token</a></td>
+      <td>Manually-created forms in django templates should specify a csrf_token to prevent CSRF attacks.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.login.html#L29'>templates/template.login.html#L29</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use &#39;url_for()&#39; to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L28'>templates/template.sidebar.html#L28</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=python.flask.security.xss.audit.template-href-var.template-href-var'>template-href-var</a></td>
+      <td>Detected a template variable used in an anchor tag with the &#39;href&#39; attribute. This allows a malicious actor to input the &#39;javascript:&#39; URI and is subject to cross- site scripting (XSS) attacks. Use &#39;url_for()&#39; to safely generate a URL. You may also consider setting the Content Security Policy (CSP) header.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/templates/template.sidebar.html#L37'>templates/template.sidebar.html#L37</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=yaml.docker-compose.security.no-new-privileges.no-new-privileges'>no-new-privileges</a></td>
+      <td>Service &#39;db-mysql&#39; allows for privilege escalation via setuid or setgid binaries. Add &#39;no-new-privileges:true&#39; in &#39;security_opt&#39; to prevent this.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/docker-compose.yml#L14'>docker-compose.yml#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=yaml.docker-compose.security.writable-filesystem-service.writable-filesystem-service'>writable-filesystem-service</a></td>
+      <td>Service &#39;db-mysql&#39; is running with a writable root filesystem. This may allow malicious applications to download and run additional payloads, or modify container files. If an application inside a container has to save something temporarily consider using a tmpfs. Add &#39;read_only: true&#39; to this service to prevent this.</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/docker-compose.yml#L14'>docker-compose.yml#L14</a></td>
+    </tr>
+    <tr>
+      <td><a href='https://semgrep.dev/r?q=semgrep_demo.formatted-template-string-taint-copy'>formatted-template-string-taint-copy</a></td>
+      <td>Untrusted input could be used to tamper with a web page rendering, which can lead to a Cross-site scripting (XSS) vulnerability. XSS vulnerabilities occur when untrusted input executes malicious JavaScript code, leading to issues such as account compromise and sensitive information leakage. To prevent this vulnerability, validate the user input, perform contextual output encoding or sanitize the input. For more information, see: [Go XSS prevention](https://semgrep.dev/docs/cheat-sheets/go-xss/).</td>
+      <td>medium</td>
+      <td>open</td>
+      <td>main</td>
+      <td><a href='https://github.com/Semgrep-Demo/go-app/blob/main/vulnerability/xss/xss.go#L100'>vulnerability/xss/xss.go#L100</a></td>
+    </tr>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+      <div class="heading">
+        <h2 id="sast-low">Findings Summary- Low Severity</h2>
+      </div>
+      <div class="container">
+        <table class="full-width"><table border="1" class="dataframe my_table" id="tablelow">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Finding Title</th>
+      <th>Finding Description & Remediation</th>
+      <th>severity</th>
+      <th>status</th>
+      <th>ref</th>
+      <th>location</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table></table>
+      </div>
+      <div class="break-after"></div>
+    </div>
+  </body>
+</html>
