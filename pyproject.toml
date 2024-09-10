@@ -28,4 +28,4 @@ dependencies = [
 semgrep_reporter = "semgrep_reporter.cli:main"
 
 [project.entry-points."pipx.run"]
-semgrep_reporter = "semgre_reporter.cli:main"
+semgrep_reporter = "semgrep_reporter.cli:main"
