@@ -42,6 +42,13 @@ Disclaimer: this CLI tool is not an officially supported semgrep product.
 
 `semgrep_reporter <options>`
 
+## Running with Docker
+Alternatively, the reporter can be run by using Docker as follows:
+1. Build a docker image. For example, `docker build -t semgrep-reporter .`
+2. Run the image. Be sure to mount a volume to `/app/reports` for saving reports and specify any reporting flags you need:
+
+`docker run --rm -e SEMGREP_API_WEB_TOKEN='your_api_token_here' -v "$(pwd)/reports":/app/reports semgrep-reporter --pdf`
+
 ## Configuration
 Before running the script, you must set up the `SEMGREP_API_WEB_TOKEN` environment variable with your Semgrep API token:
 
